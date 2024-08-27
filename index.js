@@ -1,5 +1,20 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  // Create a new Set to store the complement of each element in the array
+  const complement = new Set();
+
+  // Iterate through the array
+  for (let i = 0; i < array.length; i++) {
+    // If the current element is in the complement Set, it means we've found a pair that sums to the target
+    if (complement.has(array[i])) {
+      return true;
+    }
+
+    // Otherwise, add the complement of the current element to the Set
+    complement.add(target - array[i]);
+  }
+
+  // If we've gone through the entire array without finding a pair that sums to the target, return false
+  return false;
 }
 
 /* 
